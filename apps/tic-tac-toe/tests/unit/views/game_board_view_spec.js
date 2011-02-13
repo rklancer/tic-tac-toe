@@ -8,8 +8,8 @@ describe('GameBoardView', function() {
       view.createLayer();
     });
 
-    it('renders the gameBoard div', function() {
-      expect(view.$('#gameBoard').length).toBe(1);
+    it('has a layer id of gameBoard', function() {
+      expect(view.get('layerId')).toBe('gameBoard');
     });
 
     it('renders each of the boxes to place a marker', function() {
