@@ -1,0 +1,28 @@
+#gameBoard {
+  background: white;
+  width: 400px;
+  height: 400px;
+}
+
+#gameBoard .markerBox {
+  float: left;
+  width: 33%;
+  height: 33%;
+}
+
+#gameBoard .leftColumn {
+  border-right: 1px solid black;
+}
+
+#gameBoard .centerColumn {
+  border-right: 1px solid black;
+}
+
+#gameBoard .topRow {
+  border-bottom: 1px solid black;
+}
+
+#gameBoard .middleRow {
+  border-bottom: 1px solid black;
+}
+

@@ -24,6 +24,10 @@ describe('Viewing the board', function() {
       it('Then I should see no marks on the board', function() {
         expect(SC.CoreQuery('.playerMark').length).toBe(0);
       });
+
+      it('Then I should see 9 boxes to select', function() {
+        expect(SC.CoreQuery('.markerBox').length).toBe(9);
+      });
     });
   });
 });
