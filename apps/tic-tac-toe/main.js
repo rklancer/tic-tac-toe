@@ -1,7 +1,6 @@
 TicTacToe.main = function main() {
 
-  var gameBoard = TicTacToe.GameBoard.create();
-  gameBoard.setup();
+  var gameBoard = TicTacToe.GameBoard.createInitialBoard();
   TicTacToe.gameBoardController.set('content', gameBoard);
   TicTacToe.getPath('mainPage.mainPane').append() ;
 } ;

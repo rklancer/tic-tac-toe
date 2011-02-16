@@ -3,8 +3,7 @@ describe('TicTacToe.main', function() {
   beforeEach(function() {
     gameBoard = TicTacToe.GameBoard.create();
     mainPaneAppendSpy = spyOn(TicTacToe.mainPage.get('mainPane'), 'append');
-    createsGameBoardSpy = spyOn(TicTacToe.GameBoard, 'create').andReturn(gameBoard);
-    setupGameBoardSpy = spyOn(gameBoard, 'setup');
+    createsGameBoardSpy = spyOn(TicTacToe.GameBoard, 'createInitialBoard').andReturn(gameBoard);
     assignGameBoardSpy = spyOn(TicTacToe.gameBoardController, 'set');
     TicTacToe.main();
   });
@@ -13,12 +12,8 @@ describe('TicTacToe.main', function() {
     TicTacToe.mainPage.get('mainPane').remove();
   });
 
-  it('creates a gameBoard for the game', function() {
+  it('creates the initial game board', function() {
     expect(createsGameBoardSpy).toHaveBeenCalled();
-  });
-
-  it('sets up the gameBoard', function() {
-    expect(setupGameBoardSpy).toHaveBeenCalled();
   });
 
   it('assigns the gameBoard for the view', function() {

@@ -1,21 +1,9 @@
 describe('Viewing the board', function() {
   describe('Given an empty board', function() {
-    var board, firstTime = true;
-
-    beforeEach(function() {
-      board = TicTacToe.GameBoard.create();
-    });
-
-    afterEach(function() {
-      board.destroy();
-    });
-
     describe('When I launch the game', function() {
       beforeEach(function() {
         SC.RunLoop.begin();
-        board.setup();
-        TicTacToe.gameBoardController.set('content', board);
-        TicTacToe.mainPage.get('mainPane').append();
+          TicTacToe.main();
         SC.RunLoop.end();
       });
 

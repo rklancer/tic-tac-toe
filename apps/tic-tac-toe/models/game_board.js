@@ -13,3 +13,9 @@ TicTacToe.GameBoard = SC.Object.extend({
     }
   }
 });
+
+TicTacToe.GameBoard.createInitialBoard = function() {
+  var gameBoard = TicTacToe.GameBoard.create();
+  gameBoard.setup();
+  return gameBoard;
+};
