@@ -1,5 +1,5 @@
 TicTacToe.GameBoardView = SC.View.extend(SC.ContentDisplay,{
-  contentDisplayProperties: ''.w(),
+  contentDisplayProperties: 'cells'.w(),
   layerId: 'gameBoard',
 
   render: function(context, firstTime) {
@@ -7,14 +7,17 @@ TicTacToe.GameBoardView = SC.View.extend(SC.ContentDisplay,{
     var cells = [];
 
     if(content){
-      cells = content.get('cells');
+      cells = content;
     }
 
     var view = this;
+    console.log('rendering board');
+    console.log(content);
     this.removeAllChildren();
     cells.forEach(function(cell) {
       view.appendChild(TicTacToe.CellView.create({content: cell}));
     });
+    this.renderChildViews(context, firstTime);
     sc_super();
   }
 });

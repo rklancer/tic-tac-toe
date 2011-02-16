@@ -1,11 +1,15 @@
 describe('Starting the game', function() {
   describe('When I launch the game', function() {
     beforeEach(function() {
+      SC.RunLoop.begin();
       TicTacToe.main();
+      SC.RunLoop.end();
     });
 
     afterEach(function() {
+      SC.RunLoop.begin();
       TicTacToe.shutdown();
+      SC.RunLoop.end();
     });
 
     it('Then I should see the board', function() {
@@ -20,8 +24,8 @@ describe('Starting the game', function() {
       expect(SC.CoreQuery('.markerBox').length).toBe(9);
     });
 
-//    it('Then I should see that it is player 1\'s turn', function() {
-//      expect(SC.CoreQuery('#whoseTurnIsIt').html()).toContain('Player 1');
-//    });
+    it('Then I should see that it is player 1\'s turn', function() {
+      expect(SC.CoreQuery('#whoseTurnIsIt').html()).toContain('Player 1');
+    });
   });
 });

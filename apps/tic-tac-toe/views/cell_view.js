@@ -12,9 +12,8 @@ TicTacToe.CellView = SC.View.extend(SC.ContentDisplay,{
   }.property('row column').cacheable(),
 
   render: function(context, firstTime) {
+    console.log('rendering cell view')
     var content = this.get('content');
-    if(content){
-    }
     sc_super();
   },
 

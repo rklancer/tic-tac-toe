@@ -6,6 +6,10 @@ describe('GameBoardView', function() {
       view.createLayer();
     });
 
+    afterEach(function() {
+      view.destroy();
+    });
+
     it('renders the main div with a layer id of gameBoard', function() {
       expect(view.get('layerId')).toBe('gameBoard');
     });
@@ -21,6 +25,10 @@ describe('GameBoardView', function() {
         var board = TicTacToe.GameBoard.createInitialBoard();
         view = TicTacToe.GameBoardView.create({content: board});
         view.createLayer();
+      });
+
+      afterEach(function() {
+        view.destroy();
       });
 
       it('renders each of the boxes to place a marker', function() {
