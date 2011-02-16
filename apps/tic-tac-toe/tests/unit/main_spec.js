@@ -9,7 +9,7 @@ describe('TicTacToe.main', function() {
   });
 
   afterEach(function(){
-    TicTacToe.mainPage.get('mainPane').remove();
+    TicTacToe.shutdown();
   });
 
   it('creates the initial game board', function() {

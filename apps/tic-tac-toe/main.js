@@ -5,4 +5,9 @@ TicTacToe.main = function main() {
   TicTacToe.getPath('mainPage.mainPane').append() ;
 } ;
 
+TicTacToe.shutdown = function() {
+  TicTacToe.mainPage.get('mainPane').remove();
+  TicTacToe.gameBoardController.set('content', null);
+};
+
 function main() { TicTacToe.main(); }
