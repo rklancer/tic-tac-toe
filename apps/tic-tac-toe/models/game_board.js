@@ -11,9 +11,5 @@ TicTacToe.GameBoard = SC.Object.extend({
         this.get('cells').pushObject(TicTacToe.Cell.create({row: row, column: col}));
       }
     }
-  },
-
-  cellAt: function(row, col) {
-    return this.get('cells').objectAt((row - 1) * 3 + col -1)
   }
 });
