@@ -11,8 +11,6 @@ TicTacToe.GameBoardView = SC.View.extend(SC.ContentDisplay,{
     }
 
     var view = this;
-    console.log('rendering board');
-    console.log(content);
     this.removeAllChildren();
     cells.forEach(function(cell) {
       view.appendChild(TicTacToe.CellView.create({content: cell}));
