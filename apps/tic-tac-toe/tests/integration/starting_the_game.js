@@ -25,7 +25,7 @@ describe('Starting the game', function() {
     });
 
     it('Then I should see that it is player 1\'s turn', function() {
-      expect(SC.CoreQuery('#whoseTurnIsIt').html()).toContain('Player 1');
+      expect(SC.CoreQuery('#whoseTurnIsIt').html()).toContain('Player 1\'s Turn');
     });
   });
 });

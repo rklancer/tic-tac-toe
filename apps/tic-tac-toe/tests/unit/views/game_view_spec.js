@@ -22,7 +22,7 @@ describe('TicTacToe.GameView', function() {
     });
 
     it('renders whose turn it is', function() {
-      expect(view.$('#whoseTurnIsIt').html()).toContain('Player 1');
+      expect(view.$('#whoseTurnIsIt').html()).toContain('Player 1\'s Turn');
     });
 
     it('renders it\'s child views', function() {
