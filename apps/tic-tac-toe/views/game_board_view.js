@@ -1,22 +1,8 @@
-TicTacToe.GameBoardView = SC.View.extend(SC.ContentDisplay,{
-  contentDisplayProperties: 'cells'.w(),
+sc_require('views/cell_view');
+TicTacToe.GameBoardView = SC.CollectionView.extend({
   layerId: 'gameBoard',
-
-  render: function(context, firstTime) {
-    var content = this.get('content');
-    var cells = [];
-
-    if(content){
-      cells = content.get('cells');
-    }
-
-    var view = this;
-    this.removeAllChildren();
-    cells.forEach(function(cell) {
-      view.appendChild(TicTacToe.CellView.create({content: cell}));
-    });
-    this.renderChildViews(context, firstTime);
-  },
-
-  createChildViews: function() {}
+  exampleView: TicTacToe.CellView,
+  canEditContent: NO,
+  canReorderContent: NO,
+  canDeleteContent: NO
 });

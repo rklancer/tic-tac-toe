@@ -5,7 +5,6 @@ TicTacToe.GameView = SC.View.extend(SC.ContentDisplay,{
 
   render: function(context, firstTime) {
 
-    sc_super();
     var currentPlayer = '';
     var content = this.get('content');
 
@@ -13,6 +12,6 @@ TicTacToe.GameView = SC.View.extend(SC.ContentDisplay,{
       currentPlayer = content.get('currentPlayer');
     }
     context.push('<div id="whoseTurnIsIt">Player ', currentPlayer, '\'s Turn</div>');
-    this.renderChildViews(context, firstTime);
+    sc_super();
   }
 });

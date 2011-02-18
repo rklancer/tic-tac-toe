@@ -1,63 +1,29 @@
 describe('GameBoardView', function() {
-  describe('#render', function() {
-    var view;
+  var view;
+
+  describe('properties are that', function() {
     beforeEach(function() {
       view = TicTacToe.GameBoardView.create();
-      view.createLayer();
     });
 
-    afterEach(function() {
-      view.destroy();
-    });
-
-    it('renders the main div with a layer id of gameBoard', function() {
+    it('it\'s layer id is gameBoard', function() {
       expect(view.get('layerId')).toBe('gameBoard');
     });
 
-    describe('when the view does not have a game board', function() {
-      it('renders an empty box', function() {
-        expect(view.$('.markerBox').length).toBe(0);
-      });
+    it('all of it\'s children are cells', function() {
+      expect(view.get('exampleView')).toBe(TicTacToe.CellView)
     });
 
-    describe('when the view has a game board', function() {
-      beforeEach(function() {
-        var board = TicTacToe.GameBoard.createInitialBoard();
-        view = TicTacToe.GameBoardView.create({content: board});
-        view.createLayer();
-      });
+    it('can not edit it\'s cells', function() {
+      expect(view.get('canEditContent')).toBe(NO);
+    });
 
-      afterEach(function() {
-        view.destroy();
-      });
+    it('can not reorder it\'s cells', function() {
+      expect(view.get('canReorderContent')).toBe(NO);
+    });
 
-      it('renders each of the boxes to place a marker', function() {
-        expect(view.$('.markerBox').length).toBe(9);
-      });
-
-      it('renders 3 left column markers', function() {
-        expect(view.$('.leftColumn').length).toBe(3);
-      });
-
-      it('renders 3 center column markers', function() {
-        expect(view.$('.centerColumn').length).toBe(3);
-      });
-
-      it('renders 3 right column markers', function() {
-        expect(view.$('.rightColumn').length).toBe(3);
-      });
-
-      it('renders 3 top row markers', function() {
-        expect(view.$('.topRow').length).toBe(3);
-      });
-
-      it('renders 3 middle row markers', function() {
-        expect(view.$('.middleRow').length).toBe(3);
-      });
-
-      it('renders 3 bottom row markers', function() {
-        expect(view.$('.middleRow').length).toBe(3);
-      });
+    it('can not delete it\'s content', function() {
+      expect(view.get('canDeleteContent')).toBe(NO);
     });
   });
 });

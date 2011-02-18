@@ -10,7 +10,7 @@ TicTacToe.mainPage = SC.Page.design({
 
       gameBoard: TicTacToe.GameBoardView.design({
         layout: {centerX: 0, centerY: 0, width: 300, height: 300},
-        contentBinding: 'TicTacToe.gameBoardController'
+        contentBinding: 'TicTacToe.cellsController'
       })
     })
   })
