@@ -1,7 +1,8 @@
 describe('TicTacToe.main', function() {
-  var mainPaneAppendSpy, createsGameSpy, setupGameSpy, game;
+  var mainPaneAppendSpy, createsGameSpy, setupGameSpy, initializeStatechartSpy, game;
   beforeEach(function() {
     game = 'game';
+    initializeStatechartSpy = spyOn(TicTacToe.mainStatechart, 'initStatechart');
     createsGameSpy = spyOn(TicTacToe.Game, 'createNewGame').andReturn(game);
     setupGameSpy = spyOn(TicTacToe.gameController, 'set');
     mainPaneAppendSpy = spyOn(TicTacToe.mainPage.get('mainPane'), 'append');
@@ -12,15 +13,8 @@ describe('TicTacToe.main', function() {
     TicTacToe.shutdown();
   });
 
-  it('creates a new game', function() {
-    expect(createsGameSpy).toHaveBeenCalled();
+  it('initializes the mainStatechart', function() {
+    expect(initializeStatechartSpy).toHaveBeenCalled();
   });
 
-  it('assigns the new game for the view', function() {
-    expect(setupGameSpy).toHaveBeenCalledWith('content', game);
-  });
-
-  it('appends the main page to the page', function() {
-    expect(mainPaneAppendSpy).toHaveBeenCalled();
-  });
 });

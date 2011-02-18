@@ -2,13 +2,13 @@ describe('Starting the game', function() {
   describe('When I launch the game', function() {
     beforeEach(function() {
       SC.RunLoop.begin();
-      TicTacToe.main();
+      TicTacToe.mainStatechart.gotoState('startGame');
       SC.RunLoop.end();
     });
 
     afterEach(function() {
       SC.RunLoop.begin();
-      TicTacToe.shutdown();
+      TicTacToe.mainStatechart.gotoState('endGame');
       SC.RunLoop.end();
     });
 
