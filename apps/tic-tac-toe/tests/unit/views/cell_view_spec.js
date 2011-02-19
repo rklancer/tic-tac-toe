@@ -1,80 +1,6 @@
 describe('CellView', function() {
   var cell, view;
 
-   describe('#columnClass', function() {
-     beforeEach(function(){
-       cell = TicTacToe.Cell.create();
-       view = TicTacToe.CellView.create({content: cell});
-     });
-
-     describe('when it is in the first column', function() {
-       beforeEach(function() {
-        cell.set('column', 1);
-       });
-
-       it('it\'s column name is leftColumn', function() {
-         expect(view.get('columnClass')).toBe('leftColumn');
-       });
-     });
-
-     describe('when it is in the second column', function() {
-       beforeEach(function() {
-        cell.set('column', 2);
-       });
-
-       it('it\'s column name is center', function() {
-         expect(view.get('columnClass')).toBe('centerColumn');
-       });
-     });
-
-     describe('when it is in the third column', function() {
-       beforeEach(function() {
-         cell.set('column', 3);
-       });
-
-       it('it\'s column name is center', function() {
-         expect(view.get('columnClass')).toBe('rightColumn');
-       });
-     });
-   });
-
-   describe('#rowClass', function() {
-     beforeEach(function() {
-       cell = TicTacToe.Cell.create();
-       view = TicTacToe.CellView.create({content: cell});
-     });
-
-     describe('when it is in the first row', function() {
-       beforeEach(function() {
-         cell.set('row', 1);
-       });
-
-       it('it\'s row name is top', function() {
-         expect(view.get('rowClass')).toBe('topRow');
-       });
-     });
-
-     describe('when it is in the second row', function() {
-       beforeEach(function() {
-         cell.set('row', 2);
-       });
-
-       it('it\'s row name is middle', function() {
-         expect(view.get('rowClass')).toBe('middleRow');
-       });
-     });
-
-     describe('when it is in the third row', function() {
-       beforeEach(function() {
-         cell.set('row', 3);
-       });
-
-       it('it\'s row name is center', function() {
-         expect(view.get('rowClass')).toBe('bottomRow');
-       });
-     });
-   });
-
   describe('#layout', function() {
     beforeEach(function() {
       cell = TicTacToe.Cell.create({column: 2, row: 2});
@@ -98,31 +24,35 @@ describe('CellView', function() {
     });
   });
 
-  describe('#classNames', function() {
-    beforeEach(function() {
-      cell = TicTacToe.Cell.create({column: 2, row: 2});
-      view = TicTacToe.CellView.create({content: cell});
-    });
-
-    it('has the class markerBox', function() {
-      expect(view.get('classNames')).toContain('markerBox');
-    });
-
-    it('has the class sc-view', function(){
-      expect(view.get('classNames')).toContain('sc-view');
-    });
-
-    it('has the appropriate row class', function() {
-      expect(view.get('classNames')).toContain('middleRow');
-    });
-  });
-
   describe('#render', function() {
     var addClassSpy, context, addContentSpy;
     beforeEach(function() {
       context = {addClass: function() {}, push: function() {}};
       addClassSpy = spyOn(context, 'addClass');
       addContentSpy = spyOn(context, 'push');
+    });
+
+    describe('it always', function() {
+      beforeEach(function() {
+        cell = TicTacToe.Cell.create();
+        view = TicTacToe.CellView.create({content: cell});
+        spyOn(view, '_columnClass').andReturn('column');
+        spyOn(view, '_rowClass').andReturn('row');
+
+        view.render(context);
+      });
+
+      it('adds the class markerBox to the html', function() {
+        expect(addClassSpy).toHaveBeenCalledWith('markerBox');
+      });
+
+      it('adds the row class to the html', function() {
+        expect(addClassSpy).toHaveBeenCalledWith('column');
+      });
+
+      it('add the column class to the html', function() {
+        expect(addClassSpy).toHaveBeenCalledWith('row');
+      });
     });
 
     describe('when it does not belong to player', function(){
@@ -133,8 +63,12 @@ describe('CellView', function() {
         view.render(context);
       });
 
-      it('does not add any classes', function() {
-        expect(addClassSpy).not.toHaveBeenCalled();
+      it('does not add the player 1 class', function() {
+        expect(addClassSpy).not.toHaveBeenCalledWith('player1');
+      });
+
+      it('does not add the player 2 class', function() {
+        expect(addClassSpy).not.toHaveBeenCalledWith('player2');
       });
     });
 
@@ -211,6 +145,80 @@ describe('CellView', function() {
 
     it('delegates to mark the cell', function() {
       expect(markCellSpy).toHaveBeenCalledWith('markCell');
+    });
+  });
+
+  describe('#_columnClass', function() {
+    beforeEach(function(){
+      cell = TicTacToe.Cell.create();
+      view = TicTacToe.CellView.create({content: cell});
+    });
+
+    describe('when it is in the first column', function() {
+      beforeEach(function() {
+        cell.set('column', 1);
+      });
+
+      it('it\'s column name is leftColumn', function() {
+        expect(view.get('_columnClass')).toBe('leftColumn');
+      });
+    });
+
+    describe('when it is in the second column', function() {
+      beforeEach(function() {
+        cell.set('column', 2);
+      });
+
+      it('it\'s column name is center', function() {
+        expect(view.get('_columnClass')).toBe('centerColumn');
+      });
+    });
+
+    describe('when it is in the third column', function() {
+      beforeEach(function() {
+        cell.set('column', 3);
+      });
+
+      it('it\'s column name is center', function() {
+        expect(view.get('_columnClass')).toBe('rightColumn');
+      });
+    });
+  });
+
+  describe('#_rowClass', function() {
+    beforeEach(function() {
+      cell = TicTacToe.Cell.create();
+      view = TicTacToe.CellView.create({content: cell});
+    });
+
+    describe('when it is in the first row', function() {
+      beforeEach(function() {
+        cell.set('row', 1);
+      });
+
+      it('it\'s row name is top', function() {
+        expect(view.get('_rowClass')).toBe('topRow');
+      });
+    });
+
+    describe('when it is in the second row', function() {
+      beforeEach(function() {
+        cell.set('row', 2);
+      });
+
+      it('it\'s row name is middle', function() {
+        expect(view.get('_rowClass')).toBe('middleRow');
+      });
+    });
+
+    describe('when it is in the third row', function() {
+      beforeEach(function() {
+        cell.set('row', 3);
+      });
+
+      it('it\'s row name is center', function() {
+        expect(view.get('_rowClass')).toBe('bottomRow');
+      });
     });
   });
 });
