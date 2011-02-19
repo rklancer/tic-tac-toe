@@ -115,9 +115,102 @@ describe('CellView', function() {
     it('has the appropriate row class', function() {
       expect(view.get('classNames')).toContain('middleRow');
     });
+  });
 
-    it('has the appropriate cell class', function() {
-      expect(view.get('classNames')).toContain('centerColumn');
+  describe('#render', function() {
+    var addClassSpy, context, addContentSpy;
+    beforeEach(function() {
+      context = {addClass: function() {}, push: function() {}};
+      addClassSpy = spyOn(context, 'addClass');
+      addContentSpy = spyOn(context, 'push');
+    });
+
+    describe('when it does not belong to player', function(){
+      beforeEach(function() {
+        cell = TicTacToe.Cell.create();
+        view = TicTacToe.CellView.create({content: cell});
+
+        view.render(context);
+      });
+
+      it('does not add any classes', function() {
+        expect(addClassSpy).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('when it belongs to player 1', function() {
+      beforeEach(function() {
+        cell = TicTacToe.Cell.create({belongsToPlayer: 1});
+        view = TicTacToe.CellView.create({content: cell});
+
+        view.render(context);
+      });
+
+      it('adds the player1 class', function() {
+        expect(addClassSpy).toHaveBeenCalledWith('player1');
+      });
+
+      it('adds an \'X\' to the cell', function() {
+        expect(addContentSpy).toHaveBeenCalledWith('X');
+      });
+    });
+
+    describe('when it belongs to player 2', function() {
+      beforeEach(function() {
+        cell = TicTacToe.Cell.create({belongsToPlayer: 2});
+        view = TicTacToe.CellView.create({content: cell});
+
+        view.render(context);
+      });
+
+      it('adds the player2 class', function() {
+        expect(addClassSpy).toHaveBeenCalledWith('player2');
+      });
+
+      it('adds an \'O\' to the cell', function() {
+        expect(addContentSpy).toHaveBeenCalledWith('O');
+      });
+    });
+  });
+
+  describe('#mouseEntered', function() {
+    var currentCellSpy;
+    beforeEach(function() {
+      cell = TicTacToe.Cell.create();
+      view = TicTacToe.CellView.create({content: cell});
+      currentCellSpy = spyOn(TicTacToe.currentCellController, 'set');
+      view.mouseEntered();
+    });
+
+    it('sets the current cell to be it\'s cell', function() {
+      expect(currentCellSpy).toHaveBeenCalledWith('content', cell);
+    });
+  });
+
+  describe('#mouseDown', function() {
+    beforeEach(function() {
+      cell = TicTacToe.Cell.create();
+      view = TicTacToe.CellView.create({content: cell});
+    });
+
+    it('allows for event propagation to continue up the chain', function() {
+      expect(view.mouseDown()).toBe(YES);
+    });
+  });
+
+
+  describe('#mouseUp', function() {
+    var markCellSpy;
+    beforeEach(function() {
+      cell = TicTacToe.Cell.create();
+      view = TicTacToe.CellView.create({content: cell});
+      markCellSpy = spyOn(TicTacToe.mainStatechart, 'sendEvent');
+
+      view.mouseUp();
+    });
+
+    it('delegates to mark the cell', function() {
+      expect(markCellSpy).toHaveBeenCalledWith('markCell');
     });
   });
 });

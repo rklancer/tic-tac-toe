@@ -1,5 +1,5 @@
 TicTacToe.CellView = SC.View.extend(SC.ContentDisplay,{
-  contentDisplayProperties: 'row column'.w(),
+  contentDisplayProperties: 'row column belongsToPlayer'.w(),
 
   init: function() {
     sc_super();
@@ -13,6 +13,14 @@ TicTacToe.CellView = SC.View.extend(SC.ContentDisplay,{
 
   render: function(context, firstTime) {
     var content = this.get('content');
+    if(content.get('belongsToPlayer') == 1){
+      context.addClass('player1');
+      context.push('X');
+    }
+    if(content.get('belongsToPlayer') == 2) {
+      context.addClass('player2');
+      context.push('O');
+    }
     sc_super();
   },
 
@@ -30,5 +38,17 @@ TicTacToe.CellView = SC.View.extend(SC.ContentDisplay,{
     if(row == 1) return 'topRow';
     if(row == 2) return 'middleRow';
     return 'bottomRow';
-  }.property('row').cacheable()
+  }.property('row').cacheable(),
+
+  mouseEntered: function(event) {
+    TicTacToe.currentCellController.set('content', this.get('content'));
+  },
+
+  mouseDown: function(event) {
+    return YES;
+  },
+
+  mouseUp: function(event) {
+    TicTacToe.mainStatechart.sendEvent('markCell');
+  }
 });

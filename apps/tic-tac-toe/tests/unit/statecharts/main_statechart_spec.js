@@ -56,6 +56,26 @@ describe('TicTacToe.mainStatechart', function() {
         expect(setsPlayersTurnSpy).toHaveBeenCalledWith('currentPlayer', 1);
       });
     });
+
+    describe('when a cell is marked', function() {
+      var currentCell, markCellSpy;
+
+      beforeEach(function() {
+        currentCell = {set: function() {}};
+        spyOn(TicTacToe.currentCellController, 'get').andReturn(currentCell);
+        markCellSpy = spyOn(currentCell, 'set');
+
+        state.markCell();
+      });
+
+      it('marks the current cell as belonging to player 1', function() {
+        expect(markCellSpy).toHaveBeenCalledWith('belongsToPlayer', 1);
+      });
+
+      it('transitions to player 2\'s turn', function() {
+        expect(TicTacToe.mainStatechart.getState('player2sTurn').get('isCurrentState')).toBe(true);
+      });
+    });
   });
 
   describe('endGame state', function() {
@@ -79,6 +99,46 @@ describe('TicTacToe.mainStatechart', function() {
 
       it('appends the main page to the page', function() {
         expect(mainPaneRemoveSpy).toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('player2sTurn state', function() {
+    beforeEach(function() {
+      state = TicTacToe.mainStatechart.getState('player2sTurn');
+    });
+
+    describe('when it is entered', function() {
+      var setsPlayersTurnSpy;
+      beforeEach(function() {
+        TicTacToe.currentGame = { set: function() { }};
+        setsPlayersTurnSpy = spyOn(TicTacToe.currentGame, 'set');
+
+        state.enterState();
+      });
+
+      it('sets the current player to be player 2', function() {
+        expect(setsPlayersTurnSpy).toHaveBeenCalledWith('currentPlayer', 2);
+      });
+    });
+
+    describe('when a cell is marked', function() {
+      var currentCell, markCellSpy;
+
+      beforeEach(function() {
+        currentCell = {set: function() {}};
+        spyOn(TicTacToe.currentCellController, 'get').andReturn(currentCell);
+        markCellSpy = spyOn(currentCell, 'set');
+
+        state.markCell();
+      });
+
+      it('marks the current cell as belonging to player 2', function() {
+        expect(markCellSpy).toHaveBeenCalledWith('belongsToPlayer', 2);
+      });
+
+      it('transitions to player 1\'s turn', function() {
+        expect(TicTacToe.mainStatechart.getState('player1sTurn').get('isCurrentState')).toBe(true);
       });
     });
   });
