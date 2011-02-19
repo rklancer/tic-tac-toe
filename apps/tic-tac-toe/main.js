@@ -5,10 +5,4 @@ TicTacToe.main = function main() {
   TicTacToe.mainStatechart.initStatechart();
 } ;
 
-TicTacToe.shutdown = function() {
-  TicTacToe.mainPage.get('mainPane').remove();
-  TicTacToe.gameController.get('content').destroy();
-  if(TicTacToe.currentGame.destroy) TicTacToe.currentGame.destroy();
-};
-
 function main() { TicTacToe.main(); }

@@ -3,7 +3,6 @@ TicTacToe.GameView = SC.View.extend(SC.ContentDisplay,{
   contentDisplayProperties: 'currentPlayer'.w(),
 
   render: function(context, firstTime) {
-
     if(firstTime){
       context.push('<div id="whoseTurnIsIt">' + this._currentPlayerText() + '</div>');
     } else {

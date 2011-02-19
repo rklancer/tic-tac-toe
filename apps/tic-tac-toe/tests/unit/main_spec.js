@@ -1,16 +1,12 @@
 describe('TicTacToe.main', function() {
-  var mainPaneAppendSpy, createsGameSpy, setupGameSpy, initializeStatechartSpy, game;
+  var initializeStatechartSpy;
   beforeEach(function() {
-    game = 'game';
     initializeStatechartSpy = spyOn(TicTacToe.mainStatechart, 'initStatechart');
-    createsGameSpy = spyOn(TicTacToe.Game, 'createNewGame').andReturn(game);
-    setupGameSpy = spyOn(TicTacToe.gameController, 'set');
-    mainPaneAppendSpy = spyOn(TicTacToe.mainPage.get('mainPane'), 'append');
     TicTacToe.main();
   });
 
   afterEach(function(){
-    TicTacToe.shutdown();
+    TicTacToe.mainStatechart.gotoState('endGame');
   });
 
   it('initializes the mainStatechart', function() {
