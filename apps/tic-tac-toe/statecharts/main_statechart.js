@@ -16,8 +16,8 @@ TicTacToe.mainStatechart = Ki.Statechart.create({
     },
 
     markCell: function() {
-      TicTacToe.currentCellController.get('content').set('belongsToPlayer', 1);
-      this.gotoState('player2sTurn');
+      var currentCell = TicTacToe.currentCellController.get('content');
+      if(TicTacToe.currentGame.markCell(currentCell, 1)) this.gotoState('player2sTurn');
     }
   }),
 
@@ -27,8 +27,8 @@ TicTacToe.mainStatechart = Ki.Statechart.create({
     },
 
     markCell: function() {
-      TicTacToe.currentCellController.get('content').set('belongsToPlayer', 2);
-      this.gotoState('player1sTurn');
+      var currentCell = TicTacToe.currentCellController.get('content');
+      if(TicTacToe.currentGame.markCell(currentCell, 2)) this.gotoState('player1sTurn');
     }
   }),
 

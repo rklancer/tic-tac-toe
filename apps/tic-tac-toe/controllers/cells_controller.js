@@ -1,3 +1,3 @@
 TicTacToe.cellsController = SC.ArrayController.create({
-  contentBinding: 'TicTacToe.gameBoardController.cells'
+  contentBinding: 'TicTacToe.gameController.cells'
 });

@@ -54,10 +54,5 @@ describe('TicTacToe.GameView', function() {
         expect(whoseTurnIsItSpy).toHaveBeenCalledWith('Player 1\'s Turn');
       });
     });
-
-//    it('renders whose turn it is', function() {
-//      expect(view.$('#whoseTurnIsIt').html()).toContain('Player 1\'s Turn');
-//    });
-//
   });
 });
