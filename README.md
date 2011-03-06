@@ -9,7 +9,7 @@
 # Installation
 
     $ cd <your directory containing your projects>
-    $ git clone git@github.com:oldfartdeveloper/tic-tac-toe.git tictactoe
+    $ git clone git@github.com:gmoeck/tic-tac-toe.git tictactoe
     $ cd tictactoe
     $ cd frameworks
     $ git clone https://github.com/gmoeck/jasmine-sproutcore.git
