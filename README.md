@@ -31,4 +31,4 @@
   [http://localhost:4020/tic-tac-toe/en/current/tests/unit.html](http://localhost:4020/tic-tac-toe/en/current/tests/unit.html) to run the unit tests.
 
 # Thanks To
-  Scott Smith [oldfartdeveloper](http://github.com/oldfartdeveloper) for writing an initial readme
+  Scott Smith ([oldfartdeveloper](http://github.com/oldfartdeveloper)) for writing an initial readme
