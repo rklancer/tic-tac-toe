@@ -22,11 +22,12 @@
 
 # To see the application
 
-- [http://localhost:4020/life](http://localhost:4020/tic-tac-toe) shows the application.
+- [http://localhost:4020/tic-tac-toe](http://localhost:4020/tic-tac-toe) shows the application.
 
 # To run the tests
 
-- [http://localhost:4020/sproutcore/tests/en/tic-tac-toe](http://localhost:4020/sproutcore/tests/en/tic-tac-toe) will show a list of test groups.  Click any of them to run them.
+  [http://localhost:4020/tic-tac-toe/en/current/tests/integration.html](http://localhost:4020/tic-tac-toe/en/current/tests/integration.html) to run the integration tests.
+  [http://localhost:4020/tic-tac-toe/en/current/tests/unit.html](http://localhost:4020/tic-tac-toe/en/current/tests/unit.html) to run the unit tests.
 
 # Thanks To
-  Scott Smith [oldfartdeveloper](http://github.com/oldfartdeveloper) for writing a readme
+  Scott Smith [oldfartdeveloper](http://github.com/oldfartdeveloper) for writing an initial readme
