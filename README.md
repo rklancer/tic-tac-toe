@@ -28,6 +28,5 @@
 
 - [http://localhost:4020/sproutcore/tests/en/tic-tac-toe](http://localhost:4020/sproutcore/tests/en/tic-tac-toe) will show a list of test groups.  Click any of them to run them.
 
-# Acknowledgements
-
-- Thanks to Greg Moeck for his tireless efforts to drive BDD in SproutCore.
+# Thanks To
+  Scott Smith [oldfartdeveloper](http://github.com/oldfartdeveloper) for writing a readme
