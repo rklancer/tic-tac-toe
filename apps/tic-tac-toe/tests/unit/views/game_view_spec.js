@@ -31,9 +31,9 @@ describe('TicTacToe.GameView', function() {
         expect(addContentSpy).toHaveBeenCalledWith('<div id="whoseTurnIsIt">Player 1\'s Turn</div>');
       });
 
-      it('renders it\'s child views', function() {
-        expect(rendersChildViewsSpy).toHaveBeenCalledWith(context, true);
-      });
+      // it('renders it\'s child views', function() {
+      //   expect(rendersChildViewsSpy).toHaveBeenCalledWith(context, true);
+      // });
     });
 
     describe('when it is updating the view', function() {
