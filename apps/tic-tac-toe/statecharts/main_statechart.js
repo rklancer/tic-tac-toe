@@ -1,3 +1,11 @@
+/*globals TicTacToe Ki */
+
+sc_require('tic-tac-toe');
+
+TicTacToe.mainStatechart = Ki.Statechart.create({
+
+});
+
 // TicTacToe.mainStatechart = Ki.Statechart.create({
 //   initialState: 'startGame',
 // 
