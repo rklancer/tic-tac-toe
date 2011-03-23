@@ -1,15 +1,23 @@
-.sc-view {
-  position: relative;
-  overflow: visible;
+div.sc-view, li.sc-view, ul.sc-view {
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
 }
 
 #gameBoard {
   background: white;
+  width: 400px;
+  height: 400px;
+  top: 100px;
+  left: 100px;
+  position: absolute;
 }
 
 .markerBox {
   font-size: 70px;
   text-align: center;
+  position: absolute;  
 }
 
 .player1 {

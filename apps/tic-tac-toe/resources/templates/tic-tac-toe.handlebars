@@ -2,7 +2,7 @@
   <div id="whoseTurnIsIt"> {{whoseTurnIsIt}} </div>
   {{#collection "TicTacToe.gameBoardView"}}
     {{#view "TicTacToe.CellView"}}
-      <div class="markerBox {{positionalClasses}} {{playerClass}}" style="width: 100, height: 100, top: {{top}}, left: {{left}}">
+      <div class="markerBox {{positionalClasses}} {{playerClass}}" style="width: 100px; height: 100px; top: {{top}}px; left: {{left}}px">
         {{mark}}
       </div>
     {{/view}}
