@@ -3,8 +3,8 @@
 describe("TicTacToe.main", function() {
   var initializeStatechartSpy;
   beforeEach(function() {
-    initializeStatechartSpy = spyOn(TicTacToe.mainStatechart, 'initStatechart');
-    TicTacToe.main();
+    initializeStatechartSpy = spyOn(TicTacToe.mainStatechart, 'initStatechart').andCallThrough();
+    TicTacToe.main(); 
   });
 
   afterEach(function(){
