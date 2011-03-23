@@ -175,6 +175,10 @@ describe("TicTacToe.mainStatechart", function() {
 
     describe("when it is entered", function() {
       var mainPaneRemoveSpy, destroyGameSpy;
+      TicTacToe.mainPane = SC.Object.create({
+        remove: function () {}
+      });
+      
       beforeEach(function() {
         TicTacToe.currentGame = {destroy: function() {}};
         destroyGameSpy = spyOn(TicTacToe.currentGame, 'destroy');
