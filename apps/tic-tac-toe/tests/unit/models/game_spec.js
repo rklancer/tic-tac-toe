@@ -18,12 +18,7 @@ describe('TicTacToe.Game', function() {
 
     describe('when the cell does not currently belong to a player', function() {
       beforeEach(function() {
-        cell = { 
-          set: function () {}, 
-          get: function (attribute) { 
-            if (attribute == 'belongsToPlayer') return undefined; 
-          }
-        };
+        cell = SC.Object.create();
         setPlayerSpy = spyOn(cell, 'set');
         game = TicTacToe.Game.create({cells: [cell]});
 
@@ -41,12 +36,9 @@ describe('TicTacToe.Game', function() {
 
     describe('when the cell currently belongs to a player', function() {
       beforeEach(function() {
-        cell = {
-          set: function() {}, 
-          get: function(attribute) { 
-            if(attribute == 'belongsToPlayer') return 1;
-          }
-        };
+        cell = SC.Object.create({
+          belongsToPlayer: 1
+        });
         setPlayerSpy = spyOn(cell, 'set');
         game = TicTacToe.Game.create({cells: [cell]});
 
