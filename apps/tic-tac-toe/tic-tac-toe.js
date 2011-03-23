@@ -39,7 +39,7 @@ TicTacToe.Game = SC.Object.extend({
 
 TicTacToe.Game.createNewGame = function () {
   var game = TicTacToe.Game.create(),
-      cells = game.get('cells'),
+      cells = game.set('cells', []).get('cells'),
       i;
   
   for (i = 1; i <= 9; i++) {
