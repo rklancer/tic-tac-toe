@@ -1,7 +1,7 @@
 /*globals TicTacToe describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
 
-describe('Trying to mark an already marked cell', function() {
-  describe('When I launch the game', function() {
+describe("Trying to mark an already marked cell", function() {
+  describe("When I launch the game", function() {
     beforeEach(function() {
       SC.RunLoop.begin();
       TicTacToe.mainStatechart.gotoState('startGame');
@@ -14,21 +14,21 @@ describe('Trying to mark an already marked cell', function() {
       SC.RunLoop.end();
     });
 
-    describe('When I mark the center cell', function() {
+    describe("When I mark the center cell", function() {
       beforeEach(function() {
         clickOn($('.centerColumn.middleRow'));
       });
 
-      describe('When I try to mark the center cell again', function() {
+      describe("When I try to mark the center cell again", function() {
         beforeEach(function() {
           clickOn($('.centerColumn.middleRow'));
         });
 
-        it('Then I should see that it is still player 2\'s turn', function() {
+        it("Then I should see that it is still player 2's turn", function() {
           expect($('#whoseTurnIsIt').html()).toContain('Player 2\'s Turn');
         });
 
-        it('Then the center cell should still belong to player 1', function() {
+        it("Then the center cell should still belong to player 1", function() {
           expect($('.centerColumn.middleRow')).toHaveClass('player1');
         });
       });

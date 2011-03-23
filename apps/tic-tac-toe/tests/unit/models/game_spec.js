@@ -1,22 +1,22 @@
 /*globals TicTacToe describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
 
-describe('TicTacToe.Game', function() {
+describe("TicTacToe.Game", function() {
   var game;
 
-  describe('.createNewGame', function() {
+  describe(".createNewGame", function() {
     beforeEach(function() {
       game = TicTacToe.Game.createNewGame();
     });
 
-    it('creates the initial game board', function() {
+    it("creates the initial game board", function() {
       expect(game.get('cells').length).toBe(9);
     });
   });
 
-  describe('#markCell', function() {
+  describe("#markCell", function() {
     var cell, setPlayerSpy, didMarkCell;
 
-    describe('when the cell does not currently belong to a player', function() {
+    describe("when the cell does not currently belong to a player", function() {
       beforeEach(function() {
         cell = SC.Object.create();
         setPlayerSpy = spyOn(cell, 'set');
@@ -25,16 +25,16 @@ describe('TicTacToe.Game', function() {
         didMarkCell = game.markCell(cell, 1);
       });
 
-      it('tells the cell that it now belongs to the passed in player', function (){
+      it("tells the cell that it now belongs to the passed in player", function (){
         expect(setPlayerSpy).toHaveBeenCalledWith('belongsToPlayer', 1);
       });
 
-      it('return YES, indicating that it did mark the cell', function() {
+      it("return YES, indicating that it did mark the cell", function() {
         expect(didMarkCell).toBe(YES);
       });
     });
 
-    describe('when the cell currently belongs to a player', function() {
+    describe("when the cell currently belongs to a player", function() {
       beforeEach(function() {
         cell = SC.Object.create({
           belongsToPlayer: 1
@@ -45,11 +45,11 @@ describe('TicTacToe.Game', function() {
         didMarkCell = game.markCell(cell, 1);
       });
 
-      it('does not tell the cell that it now belongs to the passed in player', function (){
+      it("does not tell the cell that it now belongs to the passed in player", function (){
         expect(setPlayerSpy).not.toHaveBeenCalledWith('belongsToPlayer', 1);
       });
 
-      it('return NO, indicating that it did not mark the cell', function() {
+      it("return NO, indicating that it did not mark the cell", function() {
         expect(didMarkCell).toBe(NO);
       });
     });

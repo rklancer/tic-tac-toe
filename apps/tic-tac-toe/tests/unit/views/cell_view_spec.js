@@ -1,32 +1,32 @@
 /*globals TicTacToe describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
 
-describe('CellView', function() {
+describe("CellView", function() {
   var cell, view;
 
-  describe('#layout', function() {
+  describe("#layout", function() {
     beforeEach(function() {
       cell = TicTacToe.Cell.create({column: 2, row: 2});
       view = TicTacToe.CellView.create({content: cell});
     });
 
-    it('it\'s top is the row height * the number of it\'s rows - 1', function() {
+    it("it's top is the row height * the number of it's rows - 1", function() {
       expect(view.get('layout').top).toBe(100);
     });
 
-    it('it\'s left is the column width * the number it\'s row - 1', function() {
+    it("it's left is the column width * the number it's row - 1", function() {
       expect(view.get('layout').left).toBe(100);
     });
 
-    it('it\'s height is 100 px', function() {
+    it("it's height is 100 px", function() {
       expect(view.get('layout').height).toBe(100);
     });
 
-    it('it\'s width is 100px', function(){
+    it("it's width is 100px", function(){
       expect(view.get('layout').width).toBe(100);
     });
   });
 
-  describe('#render', function() {
+  describe("#render", function() {
     var addClassSpy, context, addContentSpy;
     beforeEach(function() {
       context = {addClass: function() {}, push: function() {}};
@@ -34,7 +34,7 @@ describe('CellView', function() {
       addContentSpy = spyOn(context, 'push');
     });
 
-    describe('it always', function() {
+    describe("it always", function() {
       beforeEach(function() {
         cell = TicTacToe.Cell.create();
         view = TicTacToe.CellView.create({content: cell});
@@ -44,20 +44,20 @@ describe('CellView', function() {
         view.render(context);
       });
 
-      it('adds the class markerBox to the html', function() {
+      it("adds the class markerBox to the html", function() {
         expect(addClassSpy).toHaveBeenCalledWith('markerBox');
       });
 
-      it('adds the row class to the html', function() {
+      it("adds the row class to the html", function() {
         expect(addClassSpy).toHaveBeenCalledWith('column');
       });
 
-      it('add the column class to the html', function() {
+      it("add the column class to the html", function() {
         expect(addClassSpy).toHaveBeenCalledWith('row');
       });
     });
 
-    describe('when it does not belong to player', function(){
+    describe("when it does not belong to player", function(){
       beforeEach(function() {
         cell = TicTacToe.Cell.create();
         view = TicTacToe.CellView.create({content: cell});
@@ -65,16 +65,16 @@ describe('CellView', function() {
         view.render(context);
       });
 
-      it('does not add the player 1 class', function() {
+      it("does not add the player 1 class", function() {
         expect(addClassSpy).not.toHaveBeenCalledWith('player1');
       });
 
-      it('does not add the player 2 class', function() {
+      it("does not add the player 2 class", function() {
         expect(addClassSpy).not.toHaveBeenCalledWith('player2');
       });
     });
 
-    describe('when it belongs to player 1', function() {
+    describe("when it belongs to player 1", function() {
       beforeEach(function() {
         cell = TicTacToe.Cell.create({belongsToPlayer: 1});
         view = TicTacToe.CellView.create({content: cell});
@@ -82,16 +82,16 @@ describe('CellView', function() {
         view.render(context);
       });
 
-      it('adds the player1 class', function() {
+      it("adds the player1 class", function() {
         expect(addClassSpy).toHaveBeenCalledWith('player1');
       });
 
-      it('adds an \'X\' to the cell', function() {
+      it("adds an 'X' to the cell", function() {
         expect(addContentSpy).toHaveBeenCalledWith('X');
       });
     });
 
-    describe('when it belongs to player 2', function() {
+    describe("when it belongs to player 2", function() {
       beforeEach(function() {
         cell = TicTacToe.Cell.create({belongsToPlayer: 2});
         view = TicTacToe.CellView.create({content: cell});
@@ -99,17 +99,17 @@ describe('CellView', function() {
         view.render(context);
       });
 
-      it('adds the player2 class', function() {
+      it("adds the player2 class", function() {
         expect(addClassSpy).toHaveBeenCalledWith('player2');
       });
 
-      it('adds an \'O\' to the cell', function() {
+      it("adds an 'O' to the cell", function() {
         expect(addContentSpy).toHaveBeenCalledWith('O');
       });
     });
   });
 
-  describe('#mouseEntered', function() {
+  describe("#mouseEntered", function() {
     var currentCellSpy;
     beforeEach(function() {
       cell = TicTacToe.Cell.create();
@@ -118,24 +118,24 @@ describe('CellView', function() {
       view.mouseEntered();
     });
 
-    it('sets the current cell to be it\'s cell', function() {
+    it("sets the current cell to be it's cell", function() {
       expect(currentCellSpy).toHaveBeenCalledWith('content', cell);
     });
   });
 
-  describe('#mouseDown', function() {
+  describe("#mouseDown", function() {
     beforeEach(function() {
       cell = TicTacToe.Cell.create();
       view = TicTacToe.CellView.create({content: cell});
     });
 
-    it('allows for event propagation to continue up the chain', function() {
+    it("allows for event propagation to continue up the chain", function() {
       expect(view.mouseDown()).toBe(YES);
     });
   });
 
 
-  describe('#mouseUp', function() {
+  describe("#mouseUp", function() {
     var markCellSpy;
     beforeEach(function() {
       cell = TicTacToe.Cell.create();
@@ -145,80 +145,80 @@ describe('CellView', function() {
       view.mouseUp();
     });
 
-    it('delegates to mark the cell', function() {
+    it("delegates to mark the cell", function() {
       expect(markCellSpy).toHaveBeenCalledWith('markCell');
     });
   });
 
-  describe('#_columnClass', function() {
+  describe("#_columnClass", function() {
     beforeEach(function(){
       cell = TicTacToe.Cell.create();
       view = TicTacToe.CellView.create({content: cell});
     });
 
-    describe('when it is in the first column', function() {
+    describe("when it is in the first column", function() {
       beforeEach(function() {
         cell.set('column', 1);
       });
 
-      it('it\'s column name is leftColumn', function() {
+      it("it's column name is leftColumn", function() {
         expect(view.get('_columnClass')).toBe('leftColumn');
       });
     });
 
-    describe('when it is in the second column', function() {
+    describe("when it is in the second column", function() {
       beforeEach(function() {
         cell.set('column', 2);
       });
 
-      it('it\'s column name is center', function() {
+      it("it's column name is center", function() {
         expect(view.get('_columnClass')).toBe('centerColumn');
       });
     });
 
-    describe('when it is in the third column', function() {
+    describe("when it is in the third column", function() {
       beforeEach(function() {
         cell.set('column', 3);
       });
 
-      it('it\'s column name is center', function() {
+      it("it's column name is center", function() {
         expect(view.get('_columnClass')).toBe('rightColumn');
       });
     });
   });
 
-  describe('#_rowClass', function() {
+  describe("#_rowClass", function() {
     beforeEach(function() {
       cell = TicTacToe.Cell.create();
       view = TicTacToe.CellView.create({content: cell});
     });
 
-    describe('when it is in the first row', function() {
+    describe("when it is in the first row", function() {
       beforeEach(function() {
         cell.set('row', 1);
       });
 
-      it('it\'s row name is top', function() {
+      it("it's row name is top", function() {
         expect(view.get('_rowClass')).toBe('topRow');
       });
     });
 
-    describe('when it is in the second row', function() {
+    describe("when it is in the second row", function() {
       beforeEach(function() {
         cell.set('row', 2);
       });
 
-      it('it\'s row name is middle', function() {
+      it("it's row name is middle", function() {
         expect(view.get('_rowClass')).toBe('middleRow');
       });
     });
 
-    describe('when it is in the third row', function() {
+    describe("when it is in the third row", function() {
       beforeEach(function() {
         cell.set('row', 3);
       });
 
-      it('it\'s row name is center', function() {
+      it("it's row name is center", function() {
         expect(view.get('_rowClass')).toBe('bottomRow');
       });
     });
