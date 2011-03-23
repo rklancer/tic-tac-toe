@@ -31,9 +31,9 @@ TicTacToe.Cell = SC.Object.extend({
 TicTacToe.Game = SC.Object.extend({
   cells: [],
   
-  markCell: function (cell) {
+  markCell: function (cell, player) {
     if (cell.get('belongsToPlayer') === undefined) {
-      cell.set('belongsToPlayer', 1);
+      cell.set('belongsToPlayer', player);
       return YES;
     }
     return NO;
