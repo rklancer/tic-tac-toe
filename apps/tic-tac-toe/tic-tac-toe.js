@@ -107,5 +107,14 @@ TicTacToe.CellView = SC.TemplateView.extend({
         player  = this.get('belongsToPlayer') || 0 ;
         
     return classFor[player];
+  },
+  
+  mouseEntered: function(event) {
+    TicTacToe.currentCellController.set('content', this.getPath('parentView.content'));
+  },
+  
+  mouseUp: function(event) {
+    TicTacToe.mainStatechart.sendEvent('markCell');
   }
+  
 });
