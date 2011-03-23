@@ -1,6 +1,6 @@
 /*globals TicTacToe describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
 
-describe("CellView", function() {
+xdescribe("CellView", function() {
   var cell, view;
 
   describe("#layout", function() {

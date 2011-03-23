@@ -1,6 +1,6 @@
 /*globals TicTacToe describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
 
-describe("TicTacToe.GameView", function() {
+xdescribe("TicTacToe.GameView", function() {
   var view;
 
   describe("#layerId", function() {
