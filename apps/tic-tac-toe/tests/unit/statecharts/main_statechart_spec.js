@@ -1,5 +1,7 @@
 /*globals TicTacToe describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
 
+TicTacToe.mainStatechart.initStatechart();
+
 describe("TicTacToe.mainStatechart", function() {
   var state,gotoStateSpy;
   describe("startGame state", function() {
@@ -8,12 +10,12 @@ describe("TicTacToe.mainStatechart", function() {
     });
 
     describe("when it is entered", function() {
-      var mainPaneAppendSpy, createsGameSpy, setupGameSpy, game;
+      var appendMainPaneSpy, createsGameSpy, setupGameSpy, game;
       beforeEach(function() {
         game = {set: function() {}};
         createsGameSpy = spyOn(TicTacToe.Game, 'createNewGame').andReturn(game);
         setupGameSpy = spyOn(TicTacToe.gameController, 'set');
-        mainPaneAppendSpy = spyOn(TicTacToe.mainPage.get('mainPane'), 'append');
+        appendMainPaneSpy = spyOn(TicTacToe, 'appendMainPane');
 
         state.enterState();
       });
@@ -31,7 +33,7 @@ describe("TicTacToe.mainStatechart", function() {
       });
 
       it("appends the main page to the page", function() {
-        expect(mainPaneAppendSpy).toHaveBeenCalled();
+        expect(appendMainPaneSpy).toHaveBeenCalled();
       });
 
       it("transitions to the player1sTurn state", function() {
@@ -176,7 +178,7 @@ describe("TicTacToe.mainStatechart", function() {
       beforeEach(function() {
         TicTacToe.currentGame = {destroy: function() {}};
         destroyGameSpy = spyOn(TicTacToe.currentGame, 'destroy');
-        mainPaneRemoveSpy = spyOn(TicTacToe.mainPage.get('mainPane'), 'remove');
+        mainPaneRemoveSpy = spyOn(TicTacToe.mainPane, 'remove');
 
         state.enterState();
       });
