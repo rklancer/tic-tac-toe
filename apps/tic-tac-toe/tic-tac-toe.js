@@ -18,3 +18,18 @@ jQuery(document).ready(function() {
 });
 
 TicTacToe.Cell = SC.Object.extend();
+
+TicTacToe.Game = SC.Object.extend({
+  cells: []
+});
+
+TicTacToe.Game.createNewGame = function () {
+  var game = TicTacToe.Game.create(),
+      cells = game.get('cells'),
+      i;
+  
+  for (i = 1; i <= 9; i++) {
+    cells.pushObject(TicTacToe.Cell.create());
+  }
+  return game;
+};
