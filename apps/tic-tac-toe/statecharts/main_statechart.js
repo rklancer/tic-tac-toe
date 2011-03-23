@@ -27,7 +27,18 @@ TicTacToe.mainStatechart = Ki.Statechart.create({
     }
   }),
   
-  player2sTurn: Ki.State.design(),
+  player2sTurn: Ki.State.design({
+    enterState: function () {
+      TicTacToe.currentGame.set('currentPlayer', 2);
+    },
+    
+    markCell: function () {
+      if (TicTacToe.currentGame.markCell(TicTacToe.currentCellController.get('currentCell'), 2)) {
+        this.gotoState('player1sTurn');
+      }
+      return YES;
+    }
+  }),
   
   endGame: Ki.State.design()
 });
