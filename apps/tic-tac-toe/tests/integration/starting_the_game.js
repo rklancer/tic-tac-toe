@@ -1,3 +1,5 @@
+/*globals TicTacToe describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
+
 describe('Starting the game', function() {
   describe('When I launch the game', function() {
     beforeEach(function() {

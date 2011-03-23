@@ -1,3 +1,5 @@
+/*globals TicTacToe describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
+
 describe('TicTacToe.Game', function() {
   var game;
 
@@ -16,7 +18,12 @@ describe('TicTacToe.Game', function() {
 
     describe('when the cell does not currently belong to a player', function() {
       beforeEach(function() {
-        cell = {set: function() {}, get: function(attribute) {if(attribute == 'belongsToPlayer') return undefined;}};
+        cell = { 
+          set: function () {}, 
+          get: function (attribute) { 
+            if (attribute == 'belongsToPlayer') return undefined; 
+          }
+        };
         setPlayerSpy = spyOn(cell, 'set');
         game = TicTacToe.Game.create({cells: [cell]});
 
@@ -34,7 +41,12 @@ describe('TicTacToe.Game', function() {
 
     describe('when the cell currently belongs to a player', function() {
       beforeEach(function() {
-        cell = {set: function() {}, get: function(attribute) {if(attribute == 'belongsToPlayer') return 1;}};
+        cell = {
+          set: function() {}, 
+          get: function(attribute) { 
+            if(attribute == 'belongsToPlayer') return 1;
+          }
+        };
         setPlayerSpy = spyOn(cell, 'set');
         game = TicTacToe.Game.create({cells: [cell]});
 

@@ -1,3 +1,5 @@
+/*globals TicTacToe describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
+
 describe('Trying to mark an already marked cell', function() {
   describe('When I launch the game', function() {
     beforeEach(function() {
@@ -29,7 +31,7 @@ describe('Trying to mark an already marked cell', function() {
         it('Then the center cell should still belong to player 1', function() {
           expect(SC.CoreQuery('.centerColumn.middleRow')).toHaveClass('player1');
         });
-      })
+      });
     });
   });
 });

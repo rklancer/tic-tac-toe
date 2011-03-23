@@ -1,3 +1,5 @@
+/*globals TicTacToe describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
+
 describe('GameBoardView', function() {
   var view;
 
@@ -11,7 +13,7 @@ describe('GameBoardView', function() {
     });
 
     it('all of it\'s children are cells', function() {
-      expect(view.get('exampleView')).toBe(TicTacToe.CellView)
+      expect(view.get('exampleView')).toBe(TicTacToe.CellView);
     });
 
     it('can not edit it\'s cells', function() {

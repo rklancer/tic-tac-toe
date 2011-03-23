@@ -1,3 +1,5 @@
+/*globals TicTacToe describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
+
 describe('Marking cells', function() {
   describe('When I launch the game', function() {
     beforeEach(function() {
@@ -22,7 +24,7 @@ describe('Marking cells', function() {
       });
 
       it('Then I should see that the center cell is marked as belonging to player 1', function() {
-        expect(SC.CoreQuery('.centerColumn.middleRow')).toHaveClass('player1')
+        expect(SC.CoreQuery('.centerColumn.middleRow')).toHaveClass('player1');
       });
 
       describe('When I mark the top left cell', function() {
@@ -35,9 +37,9 @@ describe('Marking cells', function() {
         });
 
         it('Then I should see that the top left cell is marked as belonging to player 2', function() {
-          expect(SC.CoreQuery('.leftColumn.topRow')).toHaveClass('player2')
+          expect(SC.CoreQuery('.leftColumn.topRow')).toHaveClass('player2');
         });
-      })
+      });
     });
   });
 });
