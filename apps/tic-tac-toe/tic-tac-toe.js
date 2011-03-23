@@ -16,3 +16,5 @@ jQuery(document).ready(function() {
     templateName: 'tic-tac-toe'
   });
 });
+
+TicTacToe.Cell = SC.Object.extend();
