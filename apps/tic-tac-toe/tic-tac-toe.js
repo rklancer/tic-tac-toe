@@ -49,3 +49,5 @@ TicTacToe.Game.createNewGame = function () {
 };
 
 TicTacToe.gameController = SC.Object.create();
+
+TicTacToe.currentCellController = SC.Object.create();
