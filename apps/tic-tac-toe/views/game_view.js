@@ -19,6 +19,6 @@ TicTacToe.GameView = SC.View.extend(SC.ContentDisplay,{
   },
 
   _whoseTurnIsItSection: function() {
-    return SC.CoreQuery('#whoseTurnIsIt');
+    return $('#whoseTurnIsIt');
   }
 });
