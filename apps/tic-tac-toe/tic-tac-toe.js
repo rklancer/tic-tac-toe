@@ -6,7 +6,9 @@
 
 TicTacToe = SC.Application.create();
 
-TicTacToe.main = function () {};
+TicTacToe.main = function () {
+  TicTacToe.mainStatechart.initStatechart();
+};
 
 jQuery(document).ready(function() {
   TicTacToe.mainPane = SC.TemplatePane.append({
