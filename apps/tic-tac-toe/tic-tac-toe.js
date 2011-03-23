@@ -20,7 +20,15 @@ jQuery(document).ready(function() {
 TicTacToe.Cell = SC.Object.extend();
 
 TicTacToe.Game = SC.Object.extend({
-  cells: []
+  cells: [],
+  
+  markCell: function (cell) {
+    if (cell.get('belongsToPlayer') === undefined) {
+      cell.set('belongsToPlayer', 1);
+      return YES;
+    }
+    return NO;
+  }
 });
 
 TicTacToe.Game.createNewGame = function () {
