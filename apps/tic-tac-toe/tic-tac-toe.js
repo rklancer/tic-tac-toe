@@ -6,16 +6,22 @@
 
 TicTacToe = SC.Application.create();
 
+jQuery(document).ready(function() {
+  TicTacToe.main();
+});
+
 TicTacToe.main = function () {
   TicTacToe.mainStatechart.initStatechart();
 };
 
-jQuery(document).ready(function() {
+TicTacToe.appendMainPane = function () {
+  if (!$.isReady) return;
+  
   TicTacToe.mainPane = SC.TemplatePane.append({
     layerId: 'tic-tac-toe',
     templateName: 'tic-tac-toe'
   });
-});
+};
 
 TicTacToe.Cell = SC.Object.extend();
 
@@ -41,3 +47,5 @@ TicTacToe.Game.createNewGame = function () {
   }
   return game;
 };
+
+TicTacToe.gameController = SC.Object.create();

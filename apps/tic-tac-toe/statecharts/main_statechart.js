@@ -5,7 +5,16 @@ sc_require('tic-tac-toe');
 TicTacToe.mainStatechart = Ki.Statechart.create({
   initialState: 'startGame',
   
-  startGame: Ki.State.design(),
+  startGame: Ki.State.design({
+    enterState: function () {
+      TicTacToe.currentGame = TicTacToe.Game.createNewGame();
+      TicTacToe.gameController.set('content', TicTacToe.currentGame);
+      TicTacToe.appendMainPane();
+      this.gotoState('player1sTurn');
+    }
+  }),
+  
+  player1sTurn: Ki.State.design(),
   
   endGame: Ki.State.design()
 });
