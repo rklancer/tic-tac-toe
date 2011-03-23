@@ -40,7 +40,12 @@ TicTacToe.mainStatechart = Ki.Statechart.create({
     }
   }),
   
-  endGame: Ki.State.design()
+  endGame: Ki.State.design({
+    enterState: function () {
+      TicTacToe.currentGame.destroy();
+      TicTacToe.mainPane.remove();
+    }
+  })
 });
 
 // TicTacToe.mainStatechart = Ki.Statechart.create({
