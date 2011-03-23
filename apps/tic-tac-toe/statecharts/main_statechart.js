@@ -3,7 +3,11 @@
 sc_require('tic-tac-toe');
 
 TicTacToe.mainStatechart = Ki.Statechart.create({
-
+  initialState: 'startGame',
+  
+  startGame: Ki.State.design(),
+  
+  endGame: Ki.State.design()
 });
 
 // TicTacToe.mainStatechart = Ki.Statechart.create({
